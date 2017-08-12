@@ -11,6 +11,11 @@ if (message.content.includes('config.token')) {
             try {
                 message.channel.sendMessage(eval(code));
             } catch (err) {
-                message.channel.sendMessage(`:x: | ${err}`);
+                let embed = new Discord.RichEmbed()
+                .setColor(0xFFFF00)
+                .setAuthor('Mensagem de erro', message.author.avatarURL)
+                  .setDescription(err)
+                  message.channel.send({embed});
             }}
+            console.log(message.content)
         }
