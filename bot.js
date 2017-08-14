@@ -35,6 +35,7 @@ fs.readdir("./eventos/", (err, files) => {
     bot.on(eventName, (...args) => eventFunction.run(bot, ...args));
   });
 });
+prefix = 'ze.'
 test = "."
 bot.on('message', message => {
   if (message.content.startsWith(test + "setTitle ex:")) {
@@ -177,57 +178,7 @@ bot.on('message', message => {
     }}
 
 }})
-
-prefix = "ze."
-bot.on("message", message => {
-  if (message.guild.id === '207609115671920642') {
-    console.log('nada')
-  }
-  else if (message.author.bot) return;
-
-  if (!points[message.author.id]) points[message.author.id] = {
-    points: 0,
-    level: 0
-  };
-  let userData = points[message.author.id];
-  userData.points++;
-
-  let curLevel = Math.floor(0.1 * Math.sqrt(userData.points));
-  if (curLevel > userData.level) {
-    // Level up!
-    userData.level = curLevel;
-    if (message.author.id === '274292270503559169') {
-      let embed = new Discord.RichEmbed()
-      .setColor(message.member.highestRole.color)
-      .setAuthor(message.author.username, message.author.avatarURL)
-      .setDescription(`Você upou para o level **${curLevel}**! Continue  assim!\n**Hinako Special Edition**`)
-      .setTimestamp()
-      .setThumbnail(message.author.avatarURL)
-      message.channel.send({embed});
-    } else if (message.guild.id === '207609115671920642') {
-      console.log(':/')
-    }
-   else {
-    message.reply('Você upou para de level! Use ``ze.level`` para verificar seus pontos')
-  }}
-  if (message.content.startsWith(prefix + "level")) {
-    if (message.author.id === '274292270503559169') {
-       let embed = new Discord.RichEmbed()
-      .setColor(message.member.highestRole.color)
-      .setAuthor(message.author.username, message.author.avatarURL)
-      .setDescription(`\nVocê esta atualmente no level ${userData.level}, com ${userData.points} pontos.\n**Hinako Special Edition**`)
-      .setTimestamp()
-      .setThumbnail(message.author.avatarURL)
-      message.channel.send({embed});
-    } else{
-   let embed = new Discord.RichEmbed()
-          .setColor(message.member.highestRole.color)
-    .setAuthor(message.author.username, message.author.avatarURL)
-    .setDescription(`\nVocê esta atualmente no level ${userData.level}, com ${userData.points} pontos.`)
-    .setFooter("Zerinho Bot Criado por Zerinho6", "https://cdn.discordapp.com/avatars/334389038528069634/5112cf97f2d90bf849e1f34edc9cee77.png?size=2048.L")
-    .setTimestamp()
-      message.channel.send({embed});
-  }}
+bot.on('message', message => {
   if (message.content.startsWith(prefix + "avatar")) {
     let parts = message.content.split(' ');
     let argsJunto = message.content.split(" ").slice(1).join(' ')
@@ -239,6 +190,8 @@ bot.on("message", message => {
       }
     }
   }
+})
+bot.on('message', message => {
   if (message.content.startsWith(prefix + "profile")) {
     let embed = new Discord.RichEmbed()
     .setAuthor(message.author.username, message.author.avatarURL)
@@ -248,7 +201,8 @@ bot.on("message", message => {
     .setTimestamp()
       .setThumbnail(message.author.avatarURL)
       message.channel.send({embed});
-  }
+  }})
+  bot.on('message', message => {
   if (message.content.startsWith(prefix + "sayd")) {
      let parts = message.content.split(' ');
     let argsJunto = message.content.split(" ").slice(1).join(' ')
@@ -259,11 +213,10 @@ bot.on("message", message => {
             message.channel.send('Você esqueceu de botar oq eu devo falar').then(message => {
                             })
         }
-  }
+  }})
   fs.writeFile("database/points.json", JSON.stringify(points), (err) => {
     if (err) console.error(err)
   });
-});
 bot.on('guildMemberAdd', member => {
   const channel = member.guild.channels.find('mods', 'log_chat');
   if (!channel) return;
