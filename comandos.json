@@ -31,5 +31,6 @@
  "waifu": {"description": "Diz se sua waifu vale a pena ou não", "usage": "ze.waifu @menção ou zerinh.waifu @menção"},
  "melhor servidor": {"description": "Fala qual é o melhor servidor", "usage": "ze.melhor servidor ou zerinh.melhor servidor"},
  "woah": {"description": "WAHAWOHOAWHOAWOHAOWHOAOHWOA", "usage": "ze.woah ou zerinh.woah"},
- "fórum": {"description": "Da o link do perfil do fórum de league of legends do jogador pedido", "usage": "ze.fórum zerinho ou zerinh.fórum Video%20Game"}}
+ "fórum": {"description": "Da o link do perfil do fórum de league of legends do jogador pedido", "usage": "ze.fórum zerinho ou zerinh.fórum Video%20Game"},
+ "creditos": {"description": "Mostra os creditos", "usage": "ze.creditos ou zerinh.creditos"}}
  
